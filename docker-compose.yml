@@ -1,14 +1,14 @@
-api:  
+api:
   build: ./
-  ports: 
-    - 3000:3000
+  working_dir: /go/src/github.com/charlires/goapp1
   volumes:
-    - ./:/go/src/github.com/charlires/project/api
+    - .:/go/src/github.com/charlires/goapp1
   links:
     - database
   environment:
-    - DB_NAME=project
+    - DB_NAME=advanced-golang-db
+  command: go run main.go
 
-database:  
+database:
   image: mongo:3.0
   command: mongod --smallfiles --quiet --logpath=/dev/null
